@@ -5,7 +5,7 @@
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="{{asset('home/img/fav.png')}}">
+    <link rel="shortcut icon" href="{{ secure_asset('home/img/fav.png')}}">
     <!-- Author Meta -->
     <meta name="author" content="">
     <!-- Meta Description -->
@@ -23,13 +23,13 @@
 CSS
 ============================================= -->
 
-    <link rel="stylesheet" href="{{asset('home/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/animate.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{ secure_asset('home/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ secure_asset('home/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ secure_asset('home/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{ secure_asset('home/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{ secure_asset('home/css/animate.css')}}">
+    <link rel="stylesheet" href="{{ secure_asset('home/css/style.css')}}">
+    <link rel="stylesheet" href="{{ secure_asset('home/css/responsive.css')}}">
 
 </head>
 
@@ -52,7 +52,7 @@ CSS
 
                         <!-- Logo -->
                         <a class="nav-brand" href="index.html">
-                            <img src="{{asset('home/img/mnlogo.png')}}" alt="">
+                            <img src="{{ secure_asset('home/img/mnlogo.png')}}" alt="">
                         </a>
 
                         <!-- Navbar Toggler -->
@@ -133,31 +133,31 @@ CSS
         </div>
         <div class="floating-shapes">
             <span data-parallax='{"x": 150, "y": -20, "rotateZ":500}'>
-                <img src="{{asset('home/img/shape/fl-shape-1.png')}}" alt="">
+                <img src="{{ secure_asset('home/img/shape/fl-shape-1.png')}}" alt="">
             </span>
             <span data-parallax='{"x": 250, "y": 150, "rotateZ":500}'>
-                <img src="{{asset('home/img/shape/fl-shape-2.png')}}" alt="">
+                <img src="{{ secure_asset('home/img/shape/fl-shape-2.png')}}" alt="">
             </span>
             <span data-parallax='{"x": -180, "y": 80, "rotateY":2000}'>
-                <img src="{{asset('home/img/shape/fl-shape-3.png')}}" alt="">
+                <img src="{{ secure_asset('home/img/shape/fl-shape-3.png')}}" alt="">
             </span>
             <span data-parallax='{"x": -20, "y": 180}'>
-                <img src="{{asset('home/img/shape/fl-shape-4.png')}}" alt="">
+                <img src="{{ secure_asset('home/img/shape/fl-shape-4.png')}}" alt="">
             </span>
             <span data-parallax='{"x": 300, "y": 70}'>
-                <img src="{{asset('home/img/shape/fl-shape-5.png')}}" alt="">
+                <img src="{{ secure_asset('home/img/shape/fl-shape-5.png')}}" alt="">
             </span>
             <span data-parallax='{"x": 250, "y": 180, "rotateZ":1500}'>
-                <img src="{{asset('home/img/shape/fl-shape-6.png')}}" alt="">
+                <img src="{{ secure_asset('home/img/shape/fl-shape-6.png')}}" alt="">
             </span>
             <span data-parallax='{"x": 180, "y": 10, "rotateZ":2000}'>
-                <img src="{{asset('home/img/shape/fl-shape-7.png')}}" alt="">
+                <img src="{{ secure_asset('home/img/shape/fl-shape-7.png')}}" alt="">
             </span>
             <span data-parallax='{"x": 60, "y": -100}'>
-                <img src="{{asset('home/img/shape/fl-shape-9.png')}}" alt="">
+                <img src="{{ secure_asset('home/img/shape/fl-shape-9.png')}}" alt="">
             </span>
             <span data-parallax='{"x": -30, "y": 150, "rotateZ":1500}'>
-                <img src="{{asset('home/img/shape/fl-shape-10.png')}}" alt="">
+                <img src="{{ secure_asset('home/img/shape/fl-shape-10.png')}}" alt="">
             </span>
         </div>
     </section>
@@ -226,17 +226,17 @@ CSS
     <!--
 JS
 ============================================= -->
-    <script src="{{asset('home/js/vendor/jquery-2.2.4.min.js')}}"></script>
-    <script src="{{asset('home/js/vendor/popper.min.js')}}"></script>
-    <script src="{{asset('home/js/jquery.easing.1.3.js')}}"></script>
-    <script src="{{asset('home/js/vendor/bootstrap.min.js')}}"></script>
-    <script src="{{asset('home/js/jquery.parallax-scroll.js')}}"></script>
-    <script src="{{asset('home/js/dopeNav.js')}}"></script>
-    <script src="{{asset('home/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('home/js/jquery.stellar.min.js')}}"></script>
-    <script src="{{asset('home/js/jquery.counterup.min.js')}}"></script>
-    <script src="{{asset('home/js/waypoints.min.js')}}"></script>
-    <script src="{{asset('home/js/main.js')}}"></script>
+    <script src="{{ secure_asset('home/js/vendor/jquery-2.2.4.min.js')}}"></script>
+    <script src="{{ secure_asset('home/js/vendor/popper.min.js')}}"></script>
+    <script src="{{ secure_asset('home/js/jquery.easing.1.3.js')}}"></script>
+    <script src="{{ secure_asset('home/js/vendor/bootstrap.min.js')}}"></script>
+    <script src="{{ secure_asset('home/js/jquery.parallax-scroll.js')}}"></script>
+    <script src="{{ secure_asset('home/js/dopeNav.js')}}"></script>
+    <script src="{{ secure_asset('home/js/owl.carousel.min.js')}}"></script>
+    <script src="{{ secure_asset('home/js/jquery.stellar.min.js')}}"></script>
+    <script src="{{ secure_asset('home/js/jquery.counterup.min.js')}}"></script>
+    <script src="{{ secure_asset('home/js/waypoints.min.js')}}"></script>
+    <script src="{{ secure_asset('home/js/main.js')}}"></script>
 </body>
 
 </html>
