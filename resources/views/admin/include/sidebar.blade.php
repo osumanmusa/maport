@@ -15,6 +15,13 @@
                         </a>
                         <div class="triangle"></div>
                     </li>
+                     <li class="nav-item" data-item="widgets">
+                        <a class="nav-item-hold" href="#">
+                            <i class="nav-icon i-Computer-Secure"></i>
+                            <span class="nav-text">Department</span>
+                        </a>
+                        <div class="triangle"></div>
+                    </li>
                     <li class="nav-item" data-item="extrakits">
                         <a class="nav-item-hold" href="#">
                             <i class="nav-icon i-Administrator"></i>
@@ -113,12 +120,12 @@
                     </li>
                 </ul>
                 <!--- Centres end -->
-<!-- Jobs -->
+<!-- Department -->
                 <ul class="childNav" data-parent="widgets">
                     <li class="nav-item">
-                        <a class="" href="/admin/Job-list/">
+                        <a class="" href="/admin/departments">
                             <i class="nav-icon i-Receipt-4"></i>
-                            <span class="item-name">Jobs</span>
+                            <span class="item-name">Departments</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -127,13 +134,13 @@
                         <a class=""
                             href="/admin/External-list/">
                             <i class="nav-icon i-Receipt-4"></i>
-                            <span class="item-name">External Job</span>
+                            <span class="item-name">Add New</span>
                         </a>
                     </li>
         
                     
                 </ul>
-<!-- jobs end -->
+<!-- Department end -->
 
 <!-- Companies -->
                 <ul class="childNav" data-parent="charts">

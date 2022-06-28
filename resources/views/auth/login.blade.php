@@ -13,7 +13,7 @@
     <title>Login | DashLite Admin Template</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{asset('dash/assets/css/dashlite.css?ver=2.9.1')}}">
-    <link id="skin-default" rel="stylesheet" href="{{asset('dash/assets/css/theme.css?ver=2.9.1')}}">
+    <link id="skin-default" rel="stylesheet" href="{{asset('dash/assets/css/theme.css')}}">
 
         <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 </head>
@@ -138,8 +138,8 @@
     </div>
     <!-- app-root @e -->
     <!-- JavaScript -->
-    <script src="./assets/js/bundle.js?ver=2.9.1"></script>
-    <script src="./assets/js/scripts.js?ver=2.9.1"></script>
+    <script src="{{asset('dash/js/bundle.js')}}"></script>
+    <script src="{{asset('dash/js/scripts.js')}}"></script>
    
 
 </html>

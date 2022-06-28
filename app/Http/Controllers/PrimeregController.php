@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Task;
-use App\Models\User;
+use App\Models\Primereg;
 use App\Models\Departments;
+use App\Models\User;
 use Auth;
 use DB;
 use Redirect;
@@ -19,9 +18,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\FormsImport;
 use App\Imports\FormsExport;
 use \Illuminate\Support\Facades\URL;
-use App\Http\Controllers\SignedrouteController;
 
-class UsersController extends Controller
+class PrimeregController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,10 +27,10 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-       $users=User::select('*')->orderBy('created_at', 'desc')->paginate(10);
-       $departments=Departments::select('id','department_name')->get();
-       return view('admin.users.index',compact('users'))->with('departments',$departments);
+    {     
+        $user =User::find(Auth::guard('web')->user()->id);
+        $propties=Primereg::select('*')->where('user_id','=',$user->id)->orderBy('created_at', 'desc')->paginate(10);
+       return view('user.sales.index',compact('propties'));
     }
 
     /**
@@ -42,8 +40,16 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        $department=Departments::select('id','department_name')->get();
+        return view('user.sales.create',compact('department'));
     }
+
+    public function createreg()
+    {
+        $department=Departments::select('id','department_name')->get();
+        return view('user.sales.createreg',compact('department'));
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -53,40 +59,27 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'department' => 'required',
-            'role' => 'required',
+            'description' => 'required',
+            'date' => 'required',
         ]);
-$pwd=Hash::make('Def12345');
-    $mymail=$request->email;
-        $subject="Thank You";
-        $data["email"]=$mymail;
-        $data["client_name"]=$request->name;
-        $data["subject"]=$subject;
-         Mail::send('admin.mails.usermail', $data, function($message)use($data)  {
-            $message->to($data["email"], $data["client_name"])
-            ->subject('New Account For MGA.');
-            });
 
+        $user =User::find(Auth::guard('web')->user()->id);
+        $prop = new Task();
+        $prop->task_name = $request->name;
+        $prop->save();
 
-        $userreg = new User();
-        $userreg->name = $request->name;
-        $userreg->email = $request->email;
-        $userreg->department_id = $request->department;
-        $userreg->role = $request->role;
-        $userreg->password = $pwd;
-        $userreg->save();
-
-        if ($userreg) {
-            Toastr::success('User Added successfully :)','success');
-            return back();
+        if ($task) {
+            Toastr::success('Task Added successfully :)','success');
+            return redirect()->route('user.tasks.list');
         }
         else {
              Toastr::error('Something went wrong :)','error');
-            return back();
+            return redirect()->route('user.tasks.list');
         }
+
+
     }
 
     /**

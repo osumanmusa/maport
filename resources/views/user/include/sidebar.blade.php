@@ -44,7 +44,28 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <!-- <p class="main-menu-title text-muted ml-3 font-weight-700 text-13 mt-4 mb-2">UI Elements</p> -->
+                                @if(2 == Auth::guard('web')->user()->department_id)
+                                <li class="Ul_li--hover">
+                                    <a class="has-arrow" href="#">
+                                        <i class="i-Computer-Secure text-20 mr-2 text-muted"></i>
+                                        <span class="item-name text-15 text-muted">Prime Register </span>
+                                    </a>
+                                    <ul class="mm-collapse">
+                                        <li class="item-name">
+                                            <a class="" href="/user/primereg">
+                                                <i class="i-Split-Four-Square-Window  mr-2 text-muted"></i>
+                                                <span class="item-name  text-muted">Data</span>
+                                            </a>
+                                        </li>
+                                        <li class="item-name">
+                                            <a class="" href="/user/create-regforms">
+                                                <i class="i-Split-Four-Square-Window  mr-2 text-muted"></i>
+                                                <span class="item-name  text-muted">Add New</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                @elseif(3 == Auth::guard('web')->user()->department_id)
                                 <li class="Ul_li--hover">
                                     <a class="has-arrow" href="#">
                                         <i class="i-Computer-Secure text-20 mr-2 text-muted"></i>
@@ -64,7 +85,10 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </li>   
+                                </li> 
+                                @endif
+                                <!-- <p class="main-menu-title text-muted ml-3 font-weight-700 text-13 mt-4 mb-2">UI Elements</p> -->
+  
                                 <!-- <p class="main-menu-title text-muted ml-3 font-weight-700 text-13 mt-4 mb-2">UI Elements</p> -->
            
                             </ul>

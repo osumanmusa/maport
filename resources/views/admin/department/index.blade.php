@@ -60,14 +60,13 @@
                             <thead>
                               <tr class="ul-widget6__tr--sticky-th">
                                 <th scope="col">#</th>
-                                <th scope="col">User Name</th>
-                                <th scope="col">Email</th>
+                                <th scope="col">Department Name</th>
                                 <th scope="col">Date Created</th>
                                 <th scope="col">Actions</th>
                               </tr>
                             </thead>
                             <tbody>
-                                @foreach($users as $user)
+                                @foreach($departments as $department)
                               <!-- start tr -->
                               <tr>
                                 <th scope="row">
@@ -77,12 +76,9 @@
                                     <span class="checkmark"></span>
                                   </label>
                                 </th>
-                                <td>{{$user->name}}</td>
+                                <td>{{$department->department_name}}</td>
                                 <td>
-                                  <span class="p-2 m-1">{{$user->email}}</span>
-                                </td>
-                                <td>
-                                  <span class=" p-2 m-1">{{$user->created_at}}</span>
+                                  <span class=" p-2 m-1">{{$department->created_at}}</span>
                                 </td>
                                 <td>
                                   <button type="button" class="btn bg-white _r_btn border-0" data-toggle="dropdown"
@@ -120,7 +116,7 @@
                         </div>
                         <nav aria-label="Page navigation example">
                           <ul class="pagination">
-                            <li class="page-item">{{$users->links()}}</li>
+                            <li class="page-item">{{$departments->links()}}</li>
                           </ul>
                         </nav>
                       </div>
@@ -160,38 +156,19 @@
           <span aria-hidden="true">×</span>
         </button>
       </div>
-          <form action="{{ route('admin.store-users') }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('admin.department.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
        
       <div class="modal-body">
      
             <div class="form-group mb-4" style="max-width: 500px; margin: 0 auto;">
               <div class="input-group mb-3">
-                    <input type="text" name="name" class="form-control" placeholder="User Name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <input type="text" name="name" class="form-control" placeholder="department Name" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <div class="input-group-append ">
                          <span class="input-group-text" id="basic-addon2"><i class="fab fa-user mr-1"></i></span>
                     </div>
               </div>
-              <div class="input-group mb-3">
-                    <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                         <span class="input-group-text" id="basic-addon2"><i class="fab fa-inbox mr-1"></i></span>
-                    </div>
-              </div>
-              <div class="input-group mb-3">
-                    <select name="department" class="form-control">
-                      <option>Assign Department</option>
-                      @foreach($departments as $department)
-                      <option value="{{$department->id}}">{{$department->department_name}}</option>
-                      @endforeach
-                    </select>
-              </div>
-              <div class="input-group mb-3">
-                    <input type="text" name="role" class="form-control" placeholder="Role" aria-label="Role" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                         <span class="input-group-text" id="basic-addon2"><i class="fab fa-user mr-1"></i></span>
-                    </div>
-              </div>
+              
             </div>
       </div>
       <div class="modal-footer">

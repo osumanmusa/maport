@@ -15,6 +15,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RegformsController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\PrimeregController;
+use App\Http\Controllers\Admin\SignedrouteController;
 
   
 
@@ -72,6 +74,9 @@ Route::post('/user-register',[RegisterController::class, 'create'])->name('user.
 
 Route::post('/admin.register',[AdminRegController::class, 'create'])->name('admin.register');
 Route::post('/admin.login',[AdminLoginController::class, 'login'])->name('admin.login');
+
+Route::get('/userlog',[SignedrouteController::class, 'login'])->name('getlogin')->middleware('signed');
+
 Auth::routes();
 
   
@@ -91,6 +96,7 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
   
 
     Route::get('/user/home', [HomeController::class, 'index'])->name('user.home');
+
     Route::get('/user/regforms', [RegformsController::class, 'index'])->name('user.regforms.list');
     Route::get('/user/create-regforms', [RegformsController::class, 'create'])->name('user.regforms.create');
     Route::post('/user/store-regforms', [RegformsController::class, 'store'])->name('user.regforms.store');
@@ -117,6 +123,17 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/user/edit-todo/{id}', [TodoController::class, 'edit'])->name('user.todo.edit');
     Route::post('/user/update-todo/{id}', [TodoController::class, 'update'])->name('user.todo.update');
     Route::get('/user/delete-todo/{id}', [TodoController::class, 'destroy'])->name('user.todo.destroy');
+
+
+    Route::get('/user/primereg', [PrimeregController::class, 'index'])->name('user.primereg.list');
+    Route::get('/user/create-primereg', [PrimeregController::class, 'create'])->name('user.primereg.create');
+    Route::post('/user/store-primereg', [PrimeregController::class, 'store'])->name('user.primereg.store');
+    Route::get('/user/edit-primereg/{id}', [PrimeregController::class, 'edit'])->name('user.primereg.edit');
+    Route::post('/user/update-primereg/{id}', [PrimeregController::class, 'update'])->name('user.primereg.update');
+    Route::get('/user/delete-primereg/{id}', [PrimeregController::class, 'destroy'])->name('user.primereg.destroy');
+
+
+
 
 });
 
@@ -166,6 +183,14 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
     
     Route::get('/admin/users-list', [App\Http\Controllers\admin\UsersController::class, 'index'])->name('admin.list-users');
+    Route::post('/admin/users-store', [App\Http\Controllers\admin\UsersController::class, 'store'])->name('admin.store-users');
+
+
+
+
+    Route::get('/admin/departments', [App\Http\Controllers\admin\DepartmentController::class, 'index'])->name('admin.department.list');
+    Route::get('/admin/create-departments', [App\Http\Controllers\admin\DepartmentController::class, 'create'])->name('admin.department.create');
+    Route::post('/admin/store-departments', [App\Http\Controllers\admin\DepartmentController::class, 'store'])->name('admin.department.store');
 
 });
 

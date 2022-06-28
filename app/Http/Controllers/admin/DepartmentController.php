@@ -19,9 +19,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\FormsImport;
 use App\Imports\FormsExport;
 use \Illuminate\Support\Facades\URL;
-use App\Http\Controllers\SignedrouteController;
 
-class UsersController extends Controller
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,9 +29,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-       $users=User::select('*')->orderBy('created_at', 'desc')->paginate(10);
-       $departments=Departments::select('id','department_name')->get();
-       return view('admin.users.index',compact('users'))->with('departments',$departments);
+        $departments=Departments::select('*')->orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.department.index')->with('departments',$departments);
     }
 
     /**
@@ -55,39 +53,24 @@ class UsersController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'department' => 'required',
-            'role' => 'required',
         ]);
-$pwd=Hash::make('Def12345');
-    $mymail=$request->email;
-        $subject="Thank You";
-        $data["email"]=$mymail;
-        $data["client_name"]=$request->name;
-        $data["subject"]=$subject;
-         Mail::send('admin.mails.usermail', $data, function($message)use($data)  {
-            $message->to($data["email"], $data["client_name"])
-            ->subject('New Account For MGA.');
-            });
 
+        $department = new Departments();
+        $department->department_name = $request->name;
+        $department->save();
 
-        $userreg = new User();
-        $userreg->name = $request->name;
-        $userreg->email = $request->email;
-        $userreg->department_id = $request->department;
-        $userreg->role = $request->role;
-        $userreg->password = $pwd;
-        $userreg->save();
-
-        if ($userreg) {
-            Toastr::success('User Added successfully :)','success');
-            return back();
+        if ($department) {
+            Toastr::success('Task Added successfully :)','success');
+            return redirect()->route('admin.department.list');
         }
         else {
              Toastr::error('Something went wrong :)','error');
-            return back();
+            return redirect()->route('admin.department.list');
         }
-    }
+
+             Toastr::error('Something went wrong :)','error');
+            return redirect()->route('admin.department.list');
+}
 
     /**
      * Display the specified resource.
